@@ -36,23 +36,43 @@ export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   /**
-   * Video autoplay strategy:
-   * - The <video> element is always in the DOM with poster, so the browser
-   *   starts fetching immediately (preload="auto").
-   * - On mount we call .play() explicitly — this is more reliable than the
-   *   autoPlay attribute on mobile browsers (especially iOS Safari).
-   * - If play() rejects (e.g. low-power mode), we retry on first user
-   *   interaction via a one-shot touchstart/click listener.
+   * Video autoplay strategy (mobile-first):
+   *
+   * 1. Two video sources: 181 KB mobile (640p, no audio) vs 1.1 MB desktop
+   *    (720p, no audio). Both have movflags +faststart so playback can begin
+   *    before the full file is downloaded.
+   *
+   * 2. The <video> element is always in the DOM with autoPlay + muted +
+   *    playsInline — these three together satisfy iOS Safari autoplay policy.
+   *
+   * 3. On mount we ALSO call .play() explicitly as a belt-and-suspenders
+   *    approach. We try on every buffering milestone (loadedmetadata,
+   *    loadeddata, canplay) because mobile browsers are inconsistent.
+   *
+   * 4. If play() still rejects (e.g. iOS low-power mode, data-saver), we
+   *    register a one-shot touchstart/click listener to resume on first
+   *    user interaction.
    */
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
+    // Pick the right source for this device
+    const isMobile = window.innerWidth < 768;
+    video.src = isMobile
+      ? "/videos/promo-mobile.mp4"
+      : "/videos/promo-optimized.mp4";
+
+    let playing = false;
+
     const tryPlay = () => {
-      video.play().catch(() => {
+      if (playing) return;
+      video.play().then(() => {
+        playing = true;
+      }).catch(() => {
         // Autoplay blocked — retry on first user interaction
         const resume = () => {
-          video.play().catch(() => {});
+          video.play().then(() => { playing = true; }).catch(() => {});
           document.removeEventListener("touchstart", resume);
           document.removeEventListener("click", resume);
         };
@@ -61,12 +81,15 @@ export default function HeroSection() {
       });
     };
 
-    // If video has enough data, play immediately; otherwise wait
-    if (video.readyState >= 3) {
-      tryPlay();
-    } else {
-      video.addEventListener("canplay", tryPlay, { once: true });
-    }
+    // Try playing at every buffering milestone
+    video.addEventListener("loadedmetadata", tryPlay, { once: true });
+    video.addEventListener("loadeddata", tryPlay, { once: true });
+    video.addEventListener("canplay", tryPlay, { once: true });
+
+    // Also try immediately in case readyState is already sufficient
+    if (video.readyState >= 1) tryPlay();
+
+    video.load();
   }, []);
 
   const countdownItems = [
@@ -78,12 +101,12 @@ export default function HeroSection() {
 
   return (
     <section className="relative overflow-hidden bg-navy-dark">
-      {/* Background video — always rendered so it starts loading immediately */}
+      {/* Background video — always in the DOM; src set in useEffect per device */}
       <video
         ref={videoRef}
-        src="/videos/promo.mp4"
         poster="/videos/poster.jpg"
         preload="auto"
+        autoPlay
         muted
         loop
         playsInline
