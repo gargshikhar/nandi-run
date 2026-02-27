@@ -20,9 +20,9 @@ export default function TestimonialsSection() {
 
       {/* Horizontal scrolling testimonial cards */}
       <div className="relative">
-        {/* Fade edges */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-24 bg-gradient-to-r from-navy-dark to-transparent" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-24 bg-gradient-to-l from-navy-dark to-transparent" />
+        {/* Fade edges — use same color at 0% opacity to avoid color-shift artifacts */}
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-32 bg-gradient-to-r from-navy-dark via-navy-dark/70 to-navy-dark/0" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-32 bg-gradient-to-l from-navy-dark via-navy-dark/70 to-navy-dark/0" />
 
         <div
           className="flex gap-6 animate-marquee"

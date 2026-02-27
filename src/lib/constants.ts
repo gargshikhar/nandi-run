@@ -104,31 +104,31 @@ export const GIVEAWAYS = [
 
 export const TESTIMONIALS = [
   {
-    name: "Priya Sharma",
+    name: "Runner A",
     quote:
       "Running through the clouds at Nandi Hills was a life-changing experience. The mist, the rain, the green — nothing compares.",
     location: "Bengaluru",
   },
   {
-    name: "Rahul Menon",
+    name: "Runner B",
     quote:
       "The elevation was brutal but so rewarding. Crossing that finish line in the rain is a moment I'll never forget.",
     location: "Chennai",
   },
   {
-    name: "Anitha Reddy",
+    name: "Runner C",
     quote:
       "Beautifully organized event with stunning views. The monsoon adds a magical dimension to the running experience.",
     location: "Hyderabad",
   },
   {
-    name: "Vikram Nair",
+    name: "Runner D",
     quote:
       "One of the toughest hill runs I've done. The 530m climb is no joke — but the scenery makes every step worth it.",
     location: "Mumbai",
   },
   {
-    name: "Deepa Kulkarni",
+    name: "Runner E",
     quote:
       "Loved the green initiative! It's rare to see an event so committed to sustainability. The run itself was spectacular.",
     location: "Bengaluru",
