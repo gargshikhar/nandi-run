@@ -153,23 +153,6 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* Results */}
-      <section className="section-padding bg-bg-section-alt">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="mb-4 font-[family-name:var(--font-heading)] text-2xl font-bold text-text">
-            Race Results
-          </h2>
-          <div className="border border-border rounded-xl bg-white p-8">
-            <p className="text-lg font-medium text-text-muted">
-              Edition 2 results will be published after race day
-            </p>
-            <p className="mt-2 text-sm text-text-muted/60">
-              August 9, 2026 — Stay tuned!
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Lightbox */}
       {lightboxIndex !== null && (
         <Lightbox
