@@ -110,9 +110,9 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 border-t border-white/8 pt-8 text-center text-xs text-white/30">
           <p>
-            &copy; {new Date().getFullYear()} Nandi Hills Monsoon Run. Organized
-            by {SITE.organizers.jjActive.name} &middot; Hosted at{" "}
-            {SITE.venue} by {SITE.organizers.divyaSree.name}
+            &copy; {new Date().getFullYear()} Nandi Hills Monsoon Run.
+            Hosted at {SITE.venue} by {SITE.organizers.divyaSree.name} &middot;
+            Supported by the Government of Karnataka
           </p>
         </div>
       </div>

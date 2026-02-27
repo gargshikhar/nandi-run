@@ -17,17 +17,66 @@ export const metadata: Metadata = {
     "Half Marathon (21.1K) and 10K Run details — routes, elevation profiles, cutoff times, and rules for the Nandi Hills Monsoon Run 2025.",
 };
 
+function getElevationPath(raceId: string, width: number, height: number, padding: number) {
+  const drawWidth = width - padding * 2;
+  const drawHeight = height - padding * 2;
+  const baseY = height - padding;
+  // Heights proportional to actual elevation: HM peaks at 530m (1.0), 10K peaks at 191m (0.36)
+  const profiles: Record<string, number[]> = {
+    "half-marathon": [0.05, 0.12, 0.25, 0.45, 0.65, 0.85, 1.0, 0.95, 0.78, 0.6, 0.45, 0.3, 0.18, 0.08, 0.05],
+    "10k-run": [0.02, 0.04, 0.08, 0.14, 0.22, 0.32, 0.36, 0.33, 0.24, 0.15, 0.07, 0.02],
+  };
+  const points = profiles[raceId] || profiles["10k-run"];
+  const segmentWidth = drawWidth / (points.length - 1);
+  const coords = points.map((p, i) => ({ x: padding + i * segmentWidth, y: baseY - p * drawHeight }));
+  let linePath = `M ${coords[0].x} ${coords[0].y}`;
+  for (let i = 1; i < coords.length; i++) {
+    const prev = coords[i - 1];
+    const curr = coords[i];
+    linePath += ` C ${prev.x + segmentWidth * 0.4} ${prev.y}, ${curr.x - segmentWidth * 0.4} ${curr.y}, ${curr.x} ${curr.y}`;
+  }
+  const areaPath = `${linePath} L ${coords[coords.length - 1].x} ${baseY} L ${coords[0].x} ${baseY} Z`;
+  const peakIdx = points.indexOf(Math.max(...points));
+  return { linePath, areaPath, peakCoord: coords[peakIdx] };
+}
+
+function ElevationProfileSVG({ raceId, ascent, distance }: { raceId: string; ascent: number; distance: string }) {
+  const width = 700, height = 220, padding = 30;
+  const gradientId = `elev-ri-${raceId}`;
+  const { linePath, areaPath, peakCoord } = getElevationPath(raceId, width, height, padding);
+  return (
+    <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto" preserveAspectRatio="xMidYMid meet" aria-label={`Elevation profile for ${distance} with ${ascent}m ascent`}>
+      <defs>
+        <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#3AD77E" stopOpacity="0.5" />
+          <stop offset="60%" stopColor="#ADF684" stopOpacity="0.15" />
+          <stop offset="100%" stopColor="#ADF684" stopOpacity="0.02" />
+        </linearGradient>
+      </defs>
+      {[0.25, 0.5, 0.75].map((frac) => (
+        <line key={frac} x1={padding} y1={height - padding - frac * (height - padding * 2)} x2={width - padding} y2={height - padding - frac * (height - padding * 2)} stroke="white" strokeOpacity="0.06" strokeDasharray="6 6" />
+      ))}
+      <path d={areaPath} fill={`url(#${gradientId})`} />
+      <path d={linePath} fill="none" stroke="#3AD77E" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx={peakCoord.x} cy={peakCoord.y} r="5" fill="#3AD77E" />
+      <text x={peakCoord.x} y={peakCoord.y - 14} fill="white" fontSize="13" fontFamily="sans-serif" textAnchor="middle" fontWeight="bold">{ascent}m peak</text>
+      <text x={padding} y={height - 6} fill="white" fillOpacity="0.4" fontSize="11" fontFamily="sans-serif">Start</text>
+      <text x={width - padding} y={height - 6} fill="white" fillOpacity="0.4" fontSize="11" fontFamily="sans-serif" textAnchor="end">Finish ({distance})</text>
+    </svg>
+  );
+}
+
 export default function RaceInfoPage() {
   return (
     <div className="pt-20">
-      {/* Hero Banner */}
-      <section className="relative bg-bg-section-alt py-16 md:py-24 border-b border-border">
+      {/* Hero Banner — compact */}
+      <section className="relative bg-bg-section-alt py-10 md:py-14 border-b border-border">
         <div className="mx-auto max-w-6xl px-4 text-center md:px-6">
-          <p className="text-xs uppercase tracking-[0.3em] text-primary mb-3">The Challenge</p>
-          <h1 className="mb-4 font-[family-name:var(--font-heading)] text-4xl font-extrabold text-text md:text-5xl">
+          <p className="text-xs uppercase tracking-[0.3em] text-primary mb-2">The Challenge</p>
+          <h1 className="mb-2 font-[family-name:var(--font-heading)] text-2xl font-extrabold text-text md:text-3xl">
             Race Information
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-text-muted">
+          <p className="mx-auto max-w-2xl text-sm text-text-muted md:text-base">
             Everything you need to know about the Half Marathon and 10K Run at
             Nandi Hills
           </p>
@@ -85,55 +134,16 @@ export default function RaceInfoPage() {
             </div>
 
             {/* Elevation Profile */}
-            <div className="mb-8 overflow-hidden rounded-2xl border border-border bg-bg-section-alt p-8">
-              <h3 className="mb-4 text-lg font-bold text-text">
+            <div className="mb-8 overflow-hidden rounded-xl border border-border bg-navy-dark p-6 md:p-8">
+              <h3 className="mb-4 text-lg font-bold text-white">
                 Elevation Profile
               </h3>
-              <div className="relative h-32 md:h-48">
-                <svg
-                  viewBox="0 0 800 200"
-                  className="h-full w-full"
-                  preserveAspectRatio="none"
-                >
-                  <defs>
-                    <linearGradient
-                      id={`grad-${race.id}`}
-                      x1="0%"
-                      y1="0%"
-                      x2="0%"
-                      y2="100%"
-                    >
-                      <stop offset="0%" stopColor="rgba(245,158,11,0.4)" />
-                      <stop offset="100%" stopColor="rgba(245,158,11,0.05)" />
-                    </linearGradient>
-                  </defs>
-                  <path
-                    d={
-                      race.id === "half-marathon"
-                        ? "M0,180 Q80,170 120,140 Q180,80 240,50 Q300,25 360,35 Q420,50 480,30 Q540,15 600,20 Q680,25 720,10 Q760,5 800,8 L800,200 L0,200 Z"
-                        : "M0,180 Q100,170 160,145 Q240,100 320,80 Q400,65 480,70 Q560,75 640,60 Q720,50 800,45 L800,200 L0,200 Z"
-                    }
-                    fill={`url(#grad-${race.id})`}
-                  />
-                  <path
-                    d={
-                      race.id === "half-marathon"
-                        ? "M0,180 Q80,170 120,140 Q180,80 240,50 Q300,25 360,35 Q420,50 480,30 Q540,15 600,20 Q680,25 720,10 Q760,5 800,8"
-                        : "M0,180 Q100,170 160,145 Q240,100 320,80 Q400,65 480,70 Q560,75 640,60 Q720,50 800,45"
-                    }
-                    fill="none"
-                    stroke="#f59e0b"
-                    strokeWidth="3"
-                  />
-                </svg>
-                <div className="absolute left-2 bottom-2 text-xs text-white/40">
-                  Start
-                </div>
-                <div className="absolute right-2 bottom-2 text-xs text-white/40">
-                  Finish
-                </div>
-              </div>
-              <div className="mt-4 flex justify-between text-sm text-text-muted">
+              <ElevationProfileSVG
+                raceId={race.id}
+                ascent={race.elevation.ascent}
+                distance={race.distance}
+              />
+              <div className="mt-4 flex justify-between text-sm text-white/50">
                 <span>Total Ascent: {race.elevation.ascent}m</span>
                 <span>Total Descent: {race.elevation.descent}m</span>
               </div>
@@ -168,19 +178,42 @@ export default function RaceInfoPage() {
         </section>
       ))}
 
-      {/* Race Rules */}
-      <section className="section-padding bg-bg-section-alt">
+      {/* Race Rules — prominent section */}
+      <section className="section-navy section-padding">
         <div className="mx-auto max-w-4xl">
-          <h2 className="mb-8 font-[family-name:var(--font-heading)] text-2xl font-bold text-text">
-            Race Rules & Regulations
-          </h2>
-          <div className="space-y-4 text-sm text-text-muted leading-relaxed">
-            <p>All participants must carry their BIB number visibly throughout the race. BIBs are non-transferable.</p>
-            <p>Participants must follow the designated route. Cutting the course will result in disqualification.</p>
-            <p>Medical staff reserves the right to pull any runner from the race if they believe the runner&apos;s health is at risk.</p>
-            <p>Headphones/earphones are discouraged for safety reasons on the hilly course.</p>
-            <p>The decisions of the Race Director and organizers are final and binding.</p>
-            <p>Littering on the course is strictly prohibited. Please use the designated waste stations.</p>
+          <div className="mb-8 text-center">
+            <p className="text-xs uppercase tracking-[0.3em] text-primary mb-3 font-semibold">
+              Important
+            </p>
+            <h2 className="font-[family-name:var(--font-heading)] text-2xl font-bold text-white md:text-3xl">
+              Race Rules & Regulations
+            </h2>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              { icon: "🏷️", rule: "Carry your BIB number visibly on the front of your shirt throughout the race. BIBs are non-transferable." },
+              { icon: "🚫", rule: "Follow the designated route at all times. Cutting the course will result in disqualification." },
+              { icon: "🩺", rule: "Medical staff reserves the right to pull any runner from the race if they believe the runner's health is at risk." },
+              { icon: "🎧", rule: "Headphones/earphones are discouraged for safety reasons on the hilly course." },
+              { icon: "⚖️", rule: "The decisions of the Race Director and organizers are final and binding." },
+              { icon: "♻️", rule: "Littering on the course is strictly prohibited. Please use the designated waste stations." },
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-4 border border-white/10 bg-white/5 p-5 rounded-xl">
+                <span className="text-2xl shrink-0">{item.icon}</span>
+                <p className="text-sm text-white/80 leading-relaxed">{item.rule}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <Link
+              href="/race-rules"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-light transition-colors"
+            >
+              View Complete Race Rules
+              <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
       </section>

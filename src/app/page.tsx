@@ -2,14 +2,14 @@ import HeroSection from "@/components/HeroSection";
 import USPSection from "@/components/USPSection";
 import RaceCategories from "@/components/RaceCategories";
 import RouteSection from "@/components/RouteSection";
-import TimelineSection from "@/components/TimelineSection";
-import GallerySection from "@/components/GallerySection";
+import RaceDayTimeline from "@/components/RaceDayTimeline";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
 import GreenRunSection from "@/components/GreenRunSection";
 import GiveawaysSection from "@/components/GiveawaysSection";
 import AboutSection from "@/components/AboutSection";
 import WinnersSection from "@/components/WinnersSection";
+import HallOfFame from "@/components/HallOfFame";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import MarqueeTicker from "@/components/animations/MarqueeTicker";
 import FogTransition from "@/components/animations/FogTransition";
@@ -39,17 +39,15 @@ export default function Home() {
       <RouteSection />
 
       <MarqueeTicker
-        text="15K — 10K — 5K — NANDI HILLS — MONSOON RUN 2025"
+        text="21.1K — 10K — NANDI HILLS — MONSOON RUN 2026"
         speed={30}
         className="text-accent/15"
       />
 
-      <GallerySection />
-
       <FogTransition height={100} />
 
       <ScrollReveal animation="fade-up">
-        <TimelineSection />
+        <RaceDayTimeline />
       </ScrollReveal>
 
       <ScrollReveal animation="fade-up">
@@ -68,12 +66,14 @@ export default function Home() {
         <WinnersSection />
       </ScrollReveal>
 
+      <HallOfFame />
+
       <ScrollReveal animation="fade-up">
         <AboutSection />
       </ScrollReveal>
 
       <MarqueeTicker
-        text="SEE YOU AT THE SUMMIT — 27 JULY 2025"
+        text="SEE YOU AT THE SUMMIT — 9 AUGUST 2026"
         speed={25}
         className="text-primary/10"
         stroke

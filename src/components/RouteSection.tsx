@@ -21,9 +21,10 @@ function getElevationPath(
   const drawHeight = height - padding * 2;
   const baseY = height - padding;
 
+  // Heights proportional to actual elevation: HM peaks at 530m (1.0), 10K peaks at 191m (0.36)
   const profiles: Record<string, number[]> = {
     "half-marathon": [0.05, 0.12, 0.25, 0.45, 0.65, 0.85, 1.0, 0.95, 0.78, 0.6, 0.45, 0.3, 0.18, 0.08, 0.05],
-    "10k-run": [0.05, 0.1, 0.2, 0.35, 0.55, 0.7, 0.65, 0.5, 0.35, 0.2, 0.1, 0.05],
+    "10k-run": [0.02, 0.04, 0.08, 0.14, 0.22, 0.32, 0.36, 0.33, 0.24, 0.15, 0.07, 0.02],
   };
 
   const points = profiles[raceId] || profiles["10k-run"];

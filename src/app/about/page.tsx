@@ -5,19 +5,19 @@ import { Instagram, ExternalLink } from "lucide-react";
 export const metadata: Metadata = {
   title: "About | Nandi Hills Monsoon Run",
   description:
-    "The story behind the Nandi Hills Monsoon Run — organized by JJ Active, hosted at Whispers of the Wind by DivyaSree.",
+    "The story behind the Nandi Hills Monsoon Run — hosted at Whispers of the Wind by DivyaSree, supported by the Government of Karnataka.",
 };
 
 export default function AboutPage() {
   return (
     <div className="pt-20">
-      <section className="relative bg-bg-section-alt py-16 md:py-24 border-b border-border">
+      <section className="relative bg-bg-section-alt py-10 md:py-14 border-b border-border">
         <div className="mx-auto max-w-6xl px-4 text-center md:px-6">
-          <p className="text-xs uppercase tracking-[0.3em] text-primary mb-3">Our Story</p>
-          <h1 className="mb-4 font-[family-name:var(--font-heading)] text-4xl font-extrabold text-text md:text-5xl">
+          <p className="text-xs uppercase tracking-[0.3em] text-primary mb-2">Our Story</p>
+          <h1 className="mb-2 font-[family-name:var(--font-heading)] text-2xl font-extrabold text-text md:text-3xl">
             About the Run
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-text-muted">
+          <p className="mx-auto max-w-2xl text-sm text-text-muted md:text-base">
             The story behind India&apos;s premier monsoon hill running experience
           </p>
         </div>
@@ -45,10 +45,11 @@ export default function AboutPage() {
               magical.
             </p>
             <p>
-              A partnership between JJ Active — one of India&apos;s most experienced
-              running event companies — and DivyaSree — whose Whispers of the
-              Wind property at the base of Nandi Hills offers a stunning,
-              nature-first venue — brought this vision to life.
+              With the support of the Government of Karnataka and the
+              Chikkaballapur District Administration, and hosted at DivyaSree&apos;s
+              Whispers of the Wind property at the base of Nandi Hills,
+              this vision was brought to life — creating one of India&apos;s few
+              monsoon hill runs.
             </p>
             <p>
               The result is a race that isn&apos;t just about distance and time.
@@ -60,45 +61,66 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Organizers */}
+      {/* Partners */}
       <section className="section-padding bg-bg-section-alt">
         <div className="mx-auto max-w-4xl">
           <h2 className="mb-8 text-center font-[family-name:var(--font-heading)] text-2xl font-bold text-text">
-            The Organizers
+            Our Partners
           </h2>
 
-          <div className="grid gap-8 md:grid-cols-2">
-            <div className="glass rounded-2xl p-6 md:p-8">
-              <div className="mb-4 flex items-center gap-3">
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary text-xl font-bold text-white">
-                  JJ
+          <div className="grid gap-6 md:grid-cols-3">
+            <div className="rounded-xl border border-border bg-white p-6">
+              <div className="mb-3 flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-navy-dark text-sm font-bold text-white">
+                  GoK
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-text">
-                    {SITE.organizers.jjActive.name}
+                  <h3 className="text-sm font-bold text-text">
+                    Government of Karnataka
                   </h3>
-                  <p className="text-sm text-text-muted">Event Organizer</p>
+                  <p className="text-xs text-text-muted">Government Support</p>
                 </div>
               </div>
-              <p className="text-sm text-text-muted leading-relaxed">
-                {SITE.organizers.jjActive.description}
+              <p className="text-xs text-text-muted leading-relaxed">
+                The event is conducted with the support and permissions of the
+                Government of Karnataka and the Chikkaballapur District Administration.
               </p>
             </div>
 
-            <div className="glass rounded-2xl p-6 md:p-8">
-              <div className="mb-4 flex items-center gap-3">
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary-light text-lg font-bold text-white">
+            <div className="rounded-xl border border-border bg-white p-6">
+              <div className="mb-3 flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-light text-sm font-bold text-white">
                   DS
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-text">
+                  <h3 className="text-sm font-bold text-text">
                     {SITE.organizers.divyaSree.name}
                   </h3>
-                  <p className="text-sm text-text-muted">Venue Partner</p>
+                  <p className="text-xs text-text-muted">Venue Partner</p>
                 </div>
               </div>
-              <p className="text-sm text-text-muted leading-relaxed">
-                {SITE.organizers.divyaSree.description}
+              <p className="text-xs text-text-muted leading-relaxed">
+                DivyaSree&apos;s Whispers of the Wind property at Nandi Hills
+                is the start and finish venue — a nature-centric setting
+                perfect for a monsoon hill run.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-white p-6">
+              <div className="mb-3 flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary text-sm font-bold text-white">
+                  JJ
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-text">
+                    {SITE.organizers.jjActive.name}
+                  </h3>
+                  <p className="text-xs text-text-muted">Event Management</p>
+                </div>
+              </div>
+              <p className="text-xs text-text-muted leading-relaxed">
+                Professional race management, timing, safety standards, and
+                on-ground logistics.
               </p>
             </div>
           </div>
