@@ -62,7 +62,7 @@ export default function RaceCategories() {
                 )}
 
                 {/* Giant distance */}
-                <div className="mb-2 font-[family-name:var(--font-heading)] text-navy-dark leading-none" style={{ fontSize: "5rem" }}>
+                <div className="mb-2 font-[family-name:var(--font-heading)] text-navy-dark leading-none text-[3.5rem] sm:text-[4rem] md:text-[5rem]">
                   {race.distance}
                 </div>
 

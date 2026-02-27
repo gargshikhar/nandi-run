@@ -34,7 +34,7 @@ export default function TestimonialsSection() {
           {items.map((t, i) => (
             <div
               key={i}
-              className="card-navy flex w-[350px] shrink-0 flex-col rounded-2xl p-6 md:w-[400px]"
+              className="card-navy flex w-[280px] shrink-0 flex-col rounded-2xl p-5 sm:w-[350px] sm:p-6 md:w-[400px]"
             >
               <Quote size={28} className="mb-4 text-primary/30" strokeWidth={1} />
               <blockquote className="mb-6 flex-1 text-sm text-white/90 leading-relaxed md:text-base">
