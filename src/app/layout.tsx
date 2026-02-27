@@ -29,6 +29,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Preload hero poster so it's ready for first paint (117KB vs 3.5MB video) */}
+        <link rel="preload" href="/videos/poster.jpg" as="image" />
         {/* Preload web fonts so they're ready for first paint — prevents FOUT */}
         <link
           rel="preload"

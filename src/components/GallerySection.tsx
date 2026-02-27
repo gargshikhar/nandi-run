@@ -56,8 +56,8 @@ const ALL_ITEMS = [
   { src: "/gallery/race4.jpg", alt: "Monsoon run — green canopy" },
   { src: "/gallery/race5.jpg", alt: "Finishers at the summit" },
   { src: "/gallery/race6.jpg", alt: "Medal ceremony" },
-  { src: "/gallery/scenic1.png", alt: "Scenic Nandi Hills route" },
-  { src: "/gallery/scenic2.png", alt: "Nandi Hills winding roads" },
+  { src: "/gallery/scenic1.jpg", alt: "Scenic Nandi Hills route" },
+  { src: "/gallery/scenic2.jpg", alt: "Nandi Hills winding roads" },
 ];
 
 const totalPages = Math.ceil(ALL_ITEMS.length / DISPLAY_COUNT);

@@ -43,9 +43,11 @@ export default function HeroSection() {
 
   return (
     <section className="relative overflow-hidden bg-navy-dark" suppressHydrationWarning>
-      {/* Background video */}
+      {/* Background video — poster shows instantly while 3.5MB video downloads */}
       <video
         src="/videos/promo.mp4"
+        poster="/videos/poster.jpg"
+        preload="auto"
         autoPlay
         muted
         loop
