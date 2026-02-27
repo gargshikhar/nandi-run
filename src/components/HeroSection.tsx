@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { ChevronDown, Bell } from "lucide-react";
 import { SITE } from "@/lib/constants";
@@ -34,11 +33,40 @@ function useCountdown(targetDate: Date) {
 export default function HeroSection() {
   const countdown = useCountdown(SITE.raceDay);
   const [notifyOpen, setNotifyOpen] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  /* Show video on all devices — muted + playsInline enables mobile autoplay */
-  const [showVideo, setShowVideo] = useState(false);
+  /**
+   * Video autoplay strategy:
+   * - The <video> element is always in the DOM with poster, so the browser
+   *   starts fetching immediately (preload="auto").
+   * - On mount we call .play() explicitly — this is more reliable than the
+   *   autoPlay attribute on mobile browsers (especially iOS Safari).
+   * - If play() rejects (e.g. low-power mode), we retry on first user
+   *   interaction via a one-shot touchstart/click listener.
+   */
   useEffect(() => {
-    setShowVideo(true);
+    const video = videoRef.current;
+    if (!video) return;
+
+    const tryPlay = () => {
+      video.play().catch(() => {
+        // Autoplay blocked — retry on first user interaction
+        const resume = () => {
+          video.play().catch(() => {});
+          document.removeEventListener("touchstart", resume);
+          document.removeEventListener("click", resume);
+        };
+        document.addEventListener("touchstart", resume, { once: true });
+        document.addEventListener("click", resume, { once: true });
+      });
+    };
+
+    // If video has enough data, play immediately; otherwise wait
+    if (video.readyState >= 3) {
+      tryPlay();
+    } else {
+      video.addEventListener("canplay", tryPlay, { once: true });
+    }
   }, []);
 
   const countdownItems = [
@@ -49,30 +77,19 @@ export default function HeroSection() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-navy-dark" suppressHydrationWarning>
-      {/* Background — desktop: video, mobile: optimised poster image */}
-      {showVideo ? (
-        <video
-          src="/videos/promo.mp4"
-          poster="/videos/poster.jpg"
-          preload="auto"
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 h-full w-full object-cover"
-          style={{ transform: "scale(1.1)" }}
-        />
-      ) : (
-        <Image
-          src="/videos/poster.jpg"
-          alt=""
-          fill
-          priority
-          className="object-cover"
-          style={{ transform: "scale(1.1)" }}
-        />
-      )}
+    <section className="relative overflow-hidden bg-navy-dark">
+      {/* Background video — always rendered so it starts loading immediately */}
+      <video
+        ref={videoRef}
+        src="/videos/promo.mp4"
+        poster="/videos/poster.jpg"
+        preload="auto"
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+        style={{ transform: "scale(1.1)" }}
+      />
       {/* Subtle overlay for text readability */}
       <div className="absolute inset-0 bg-navy-dark/40" />
 
