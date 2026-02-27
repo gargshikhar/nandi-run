@@ -25,7 +25,7 @@ export default function RaceCategories() {
   return (
     <section id="races" className="section-padding bg-bg">
       <div className="mx-auto max-w-5xl">
-        <div className="mb-14 text-center">
+        <div className="mb-10 text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-primary mb-3 font-semibold">
             Choose Your Challenge
           </p>
@@ -48,7 +48,7 @@ export default function RaceCategories() {
             return (
               <div
                 key={race.id}
-                className={`relative flex flex-col border p-8 md:p-10 text-center transition-shadow hover:shadow-lg ${
+                className={`relative flex flex-col rounded-xl border p-8 md:p-10 text-center transition-shadow hover:shadow-lg ${
                   featured
                     ? "border-primary bg-white shadow-md"
                     : "border-border bg-white"
@@ -56,7 +56,7 @@ export default function RaceCategories() {
               >
                 {/* Featured badge */}
                 {featured && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary px-4 py-1 text-[11px] font-bold uppercase tracking-wider text-navy-dark">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-[11px] font-bold uppercase tracking-wider text-navy-dark">
                     Most Popular
                   </div>
                 )}
@@ -124,7 +124,7 @@ export default function RaceCategories() {
                 {/* CTA */}
                 <Link
                   href={SITE.registerUrl}
-                  className={`flex w-full items-center justify-center gap-2 py-4 text-sm font-bold transition-all ${
+                  className={`flex w-full items-center justify-center gap-2 rounded-lg py-4 text-sm font-bold transition-all ${
                     featured
                       ? "bg-primary text-navy-dark hover:bg-accent-dark"
                       : "border border-navy/20 text-navy-dark hover:bg-navy/5"

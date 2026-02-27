@@ -9,7 +9,7 @@ export default function TestimonialsSection() {
 
   return (
     <section className="section-padding bg-navy-dark overflow-hidden" data-nav-theme="dark">
-      <div className="mx-auto max-w-6xl mb-12">
+      <div className="mx-auto max-w-6xl mb-8">
         <div className="text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-primary mb-3">Testimonials</p>
           <h2 className="mb-3 font-[family-name:var(--font-heading)] font-extrabold text-white" style={{ fontSize: "var(--text-heading)" }}>

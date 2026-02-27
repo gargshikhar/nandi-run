@@ -30,7 +30,7 @@ export default function Home() {
         <USPSection />
       </ScrollReveal>
 
-      <FogTransition height={120} />
+      <FogTransition height={60} />
 
       <ScrollReveal animation="fade-up">
         <RaceCategories />
@@ -44,7 +44,7 @@ export default function Home() {
         className="text-accent/15"
       />
 
-      <FogTransition height={100} />
+      <FogTransition height={50} />
 
       <ScrollReveal animation="fade-up">
         <RaceDayTimeline />
@@ -60,7 +60,7 @@ export default function Home() {
 
       <TestimonialsSection />
 
-      <FogTransition height={100} />
+      <FogTransition height={50} />
 
       <ScrollReveal animation="fade-up">
         <WinnersSection />

@@ -12,7 +12,7 @@ export default function FAQSection({ limit = 8 }: { limit?: number }) {
   return (
     <section id="faqs" className="section-padding bg-bg">
       <div className="mx-auto max-w-3xl">
-        <div className="mb-12 text-center">
+        <div className="mb-8 text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-primary mb-3">FAQs</p>
           <h2 className="mb-3 font-[family-name:var(--font-heading)] font-extrabold text-text" style={{ fontSize: "var(--text-heading)" }}>
             Frequently Asked Questions

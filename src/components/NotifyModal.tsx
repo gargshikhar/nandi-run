@@ -48,7 +48,7 @@ export default function NotifyModal({ isOpen, onClose }: NotifyModalProps) {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm" onClick={onClose}>
       <div
-        className="relative mx-4 w-full max-w-md bg-white border border-border p-8"
+        className="relative mx-4 w-full max-w-md rounded-xl bg-white border border-border p-8"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -69,7 +69,7 @@ export default function NotifyModal({ isOpen, onClose }: NotifyModalProps) {
             </p>
             <button
               onClick={onClose}
-              className="bg-primary px-6 py-2.5 text-sm font-bold text-navy-dark hover:bg-accent-dark transition-colors"
+              className="rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-navy-dark hover:bg-accent-dark transition-colors"
             >
               Got it
             </button>
@@ -77,7 +77,7 @@ export default function NotifyModal({ isOpen, onClose }: NotifyModalProps) {
         ) : (
           <>
             <div className="mb-6 text-center">
-              <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center bg-primary/10">
+              <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
                 <Bell size={24} className="text-primary" />
               </div>
               <h3 className="font-[family-name:var(--font-heading)] text-xl font-bold text-text mb-1">
@@ -99,7 +99,7 @@ export default function NotifyModal({ isOpen, onClose }: NotifyModalProps) {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Your name"
-                  className="w-full border border-border bg-bg px-4 py-2.5 text-sm text-text placeholder:text-text-muted/50 focus:border-primary focus:outline-none"
+                  className="w-full rounded-lg border border-border bg-bg px-4 py-2.5 text-sm text-text placeholder:text-text-muted/50 focus:border-primary focus:outline-none"
                 />
               </div>
 
@@ -115,7 +115,7 @@ export default function NotifyModal({ isOpen, onClose }: NotifyModalProps) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="w-full border border-border bg-bg px-4 py-2.5 text-sm text-text placeholder:text-text-muted/50 focus:border-primary focus:outline-none"
+                  className="w-full rounded-lg border border-border bg-bg px-4 py-2.5 text-sm text-text placeholder:text-text-muted/50 focus:border-primary focus:outline-none"
                 />
               </div>
 
@@ -126,7 +126,7 @@ export default function NotifyModal({ isOpen, onClose }: NotifyModalProps) {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="flex w-full items-center justify-center gap-2 bg-primary py-3 text-sm font-bold text-navy-dark transition-all hover:bg-accent-dark disabled:opacity-60"
+                className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3 text-sm font-bold text-navy-dark transition-all hover:bg-accent-dark disabled:opacity-60"
               >
                 {status === "loading" ? (
                   <Loader2 size={16} className="animate-spin" />

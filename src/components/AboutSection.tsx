@@ -6,7 +6,7 @@ export default function AboutSection() {
   return (
     <section id="about" className="section-padding bg-bg">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-12 text-center">
+        <div className="mb-8 text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-primary mb-3">About</p>
           <h2 className="mb-3 font-[family-name:var(--font-heading)] font-extrabold text-text" style={{ fontSize: "var(--text-heading)" }}>
             Our Story
@@ -16,7 +16,7 @@ export default function AboutSection() {
           </p>
         </div>
 
-        <div className="mb-12 mx-auto max-w-3xl text-center">
+        <div className="mb-8 mx-auto max-w-3xl text-center">
           <p className="text-base text-text-muted leading-relaxed md:text-lg">
             The Nandi Hills Monsoon Run was born from a simple idea: what if
             runners could experience the raw beauty of India&apos;s Western

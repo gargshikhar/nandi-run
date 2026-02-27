@@ -56,7 +56,7 @@ export default function RaceDayTimeline() {
   return (
     <section className="section-padding bg-navy-dark" data-nav-theme="dark">
       <div className="mx-auto max-w-4xl">
-        <div className="mb-10 text-center">
+        <div className="mb-8 text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-primary mb-3">
             Race Day
           </p>
@@ -80,12 +80,11 @@ export default function RaceDayTimeline() {
               {schedule.map((item, i) => (
                 <div key={i} className="relative flex gap-6">
                   <div
-                    className={`relative z-10 flex h-16 w-16 shrink-0 items-center justify-center ${
+                    className={`relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-xl ${
                       item.highlight
                         ? "bg-primary text-navy-dark"
                         : "bg-white/5 border border-white/10 text-primary"
                     }`}
-                    style={{ borderRadius: "12px" }}
                   >
                     <item.icon size={22} />
                   </div>
@@ -114,20 +113,18 @@ export default function RaceDayTimeline() {
           {schedule.map((item, i) => (
             <div
               key={i}
-              className={`flex items-center gap-4 p-4 border ${
+              className={`flex items-center gap-4 rounded-xl p-4 border ${
                 item.highlight
                   ? "bg-primary/10 border-primary/20"
                   : "bg-white/5 border-white/10"
               }`}
-              style={{ borderRadius: "12px" }}
             >
               <div
-                className={`flex h-12 w-12 shrink-0 items-center justify-center ${
+                className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg ${
                   item.highlight
                     ? "bg-primary text-navy-dark"
                     : "bg-white/5 text-primary"
                 }`}
-                style={{ borderRadius: "10px" }}
               >
                 <item.icon size={20} />
               </div>

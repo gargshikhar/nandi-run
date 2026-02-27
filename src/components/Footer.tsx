@@ -5,8 +5,8 @@ import { SITE, NAV_ITEMS } from "@/lib/constants";
 export default function Footer() {
   return (
     <footer className="bg-navy-dark text-white/70">
-      <div className="mx-auto max-w-7xl px-4 py-16 md:px-6">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto max-w-7xl px-4 py-12 md:px-6">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div>
             <div className="mb-4 flex items-center gap-2">
@@ -108,7 +108,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 border-t border-white/8 pt-8 text-center text-xs text-white/30">
+        <div className="mt-8 border-t border-white/8 pt-6 text-center text-xs text-white/30">
           <p>
             &copy; {new Date().getFullYear()} Nandi Hills Monsoon Run.
             Hosted at {SITE.venue} by {SITE.organizers.divyaSree.name} &middot;

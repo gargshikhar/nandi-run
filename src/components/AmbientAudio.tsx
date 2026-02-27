@@ -294,7 +294,7 @@ export default function AmbientAudio() {
   return (
     <button
       onClick={toggle}
-      className="flex h-11 w-11 items-center justify-center border border-border bg-white/80 backdrop-blur-sm text-navy transition-all hover:bg-white hover:border-navy/30"
+      className="flex h-11 w-11 items-center justify-center rounded-lg border border-border bg-white/80 backdrop-blur-sm text-navy transition-all hover:bg-white hover:border-navy/30"
       aria-label={playing ? "Stop rain sounds" : "Play rain sounds"}
       title={playing ? "Stop rain sounds" : "Play rain sounds"}
     >

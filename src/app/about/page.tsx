@@ -57,7 +57,7 @@ export default function AboutPage() {
           </h2>
 
           <div className="grid gap-6 md:grid-cols-3">
-            <div className="rounded-xl border border-border bg-white p-6">
+            <div className="rounded-2xl border border-border bg-white p-6">
               <div className="mb-3 flex items-center gap-3">
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-navy-dark text-sm font-bold text-white">
                   GoK
@@ -75,7 +75,7 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="rounded-xl border border-border bg-white p-6">
+            <div className="rounded-2xl border border-border bg-white p-6">
               <div className="mb-3 flex items-center gap-3">
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-light text-sm font-bold text-white">
                   DS
@@ -94,7 +94,7 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="rounded-xl border border-border bg-white p-6">
+            <div className="rounded-2xl border border-border bg-white p-6">
               <div className="mb-3 flex items-center gap-3">
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary text-sm font-bold text-white">
                   JJ

@@ -136,7 +136,7 @@ export default function RouteSection() {
     <section id="routes" className="section-navy section-padding" data-nav-theme="dark">
       <div className="mx-auto max-w-6xl">
         {/* Header */}
-        <div className="mb-10 text-center">
+        <div className="mb-8 text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-primary mb-3">
             Routes
           </p>
@@ -152,12 +152,12 @@ export default function RouteSection() {
         </div>
 
         {/* Tabs */}
-        <div className="mb-10 flex justify-center gap-2">
+        <div className="mb-8 flex justify-center gap-2">
           {RACES.map((r, i) => (
             <button
               key={r.id}
               onClick={() => setActiveIdx(i)}
-              className={`px-6 py-3 text-sm font-bold transition-all ${
+              className={`rounded-lg px-6 py-3 text-sm font-bold transition-all ${
                 i === activeIdx
                   ? "bg-primary text-navy-dark"
                   : "border border-white/15 text-white/60 hover:text-white hover:border-white/30"
@@ -171,7 +171,7 @@ export default function RouteSection() {
         {/* Content area */}
         <div className="grid gap-8 md:grid-cols-5">
           {/* Elevation chart — 3/5 width */}
-          <div className="md:col-span-3 border border-white/10 bg-white/5 p-6">
+          <div className="md:col-span-3 rounded-xl border border-white/10 bg-white/5 p-6">
             <div className="mb-4 flex items-center gap-2">
               <Mountain size={18} className="text-primary" />
               <h3 className="text-sm font-bold uppercase tracking-wider text-white/60">
@@ -188,7 +188,7 @@ export default function RouteSection() {
           {/* Stats panel — 2/5 width */}
           <div className="md:col-span-2 flex flex-col gap-4">
             {/* Distance */}
-            <div className="border border-white/10 bg-white/5 p-6">
+            <div className="rounded-xl border border-white/10 bg-white/5 p-6">
               <p className="text-xs uppercase tracking-wider text-white/40 mb-1">
                 Distance
               </p>
@@ -199,14 +199,14 @@ export default function RouteSection() {
 
             {/* Ascent / Descent */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="border border-white/10 bg-white/5 p-5">
+              <div className="rounded-xl border border-white/10 bg-white/5 p-5">
                 <TrendingUp size={18} className="mb-2 text-primary" />
                 <p className="text-xs text-white/40">Ascent</p>
                 <p className="text-xl font-bold text-white">
                   {race.elevation.ascent}m
                 </p>
               </div>
-              <div className="border border-white/10 bg-white/5 p-5">
+              <div className="rounded-xl border border-white/10 bg-white/5 p-5">
                 <TrendingUp size={18} className="mb-2 rotate-180 text-accent" />
                 <p className="text-xs text-white/40">Descent</p>
                 <p className="text-xl font-bold text-white">
@@ -216,7 +216,7 @@ export default function RouteSection() {
             </div>
 
             {/* Location & course info */}
-            <div className="border border-white/10 bg-white/5 p-5 flex-1">
+            <div className="rounded-xl border border-white/10 bg-white/5 p-5 flex-1">
               <div className="flex items-center gap-2 mb-3">
                 <MapPin size={16} className="text-primary" />
                 <p className="text-sm font-semibold text-white">
@@ -235,7 +235,7 @@ export default function RouteSection() {
         </div>
 
         {/* Landscape image */}
-        <div className="mt-8 relative aspect-[21/7] overflow-hidden">
+        <div className="mt-8 relative aspect-[21/7] overflow-hidden rounded-xl">
           <Image
             src={raceImages[race.id] || raceImages["10k-run"]}
             alt={`${race.name} route scenery`}

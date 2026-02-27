@@ -31,7 +31,7 @@ export default function USPSection() {
           {usps.map((item) => (
             <div
               key={item.title}
-              className="card-light flex flex-col items-center p-5 text-center md:p-6"
+              className="card-light flex flex-col items-center rounded-xl p-5 text-center md:p-6"
             >
               <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl" style={{ background: "var(--gradient-hero)" }}>
                 <item.icon

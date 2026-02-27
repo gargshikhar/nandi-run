@@ -36,7 +36,7 @@ export default function GreenRunSection() {
       </div>
 
       <div className="relative mx-auto max-w-6xl">
-        <div className="grid items-center gap-12 md:grid-cols-2">
+        <div className="grid items-center gap-8 md:grid-cols-2">
           <div>
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-green-500/10 px-4 py-1.5 text-sm font-medium text-green-700">
               <Sparkles size={16} />

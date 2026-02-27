@@ -24,7 +24,7 @@ export default function CalendarButton({ event = "bib" }: { event?: string }) {
   return (
     <button
       onClick={handleDownload}
-      className="inline-flex items-center gap-2 bg-primary px-6 py-3 text-sm font-bold text-navy-dark transition-all hover:bg-accent-dark"
+      className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-bold text-navy-dark transition-all hover:bg-accent-dark"
     >
       <CalendarPlus size={18} />
       Add to Calendar

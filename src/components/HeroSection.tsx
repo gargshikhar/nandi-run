@@ -79,7 +79,7 @@ export default function HeroSection() {
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 pt-20 pb-24 md:pb-20">
         <div className="mx-auto max-w-6xl text-center">
           {/* Edition badge */}
-          <div className="mb-6 inline-block border border-white/20 bg-white/10 backdrop-blur-sm px-5 py-2 text-xs font-medium uppercase tracking-[0.2em] text-white md:mb-8">
+          <div className="mb-6 inline-block rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-5 py-2 text-xs font-medium uppercase tracking-[0.2em] text-white md:mb-8">
             {SITE.edition} &middot; {SITE.date}
           </div>
 
@@ -112,14 +112,14 @@ export default function HeroSection() {
           <div className="mb-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center md:mb-16 md:gap-4">
             <Link
               href={SITE.registerUrl}
-              className="group relative bg-primary px-10 py-4 text-lg font-bold text-navy-dark shadow-2xl transition-all hover:bg-accent-dark hover:scale-105"
+              className="group relative rounded-xl bg-primary px-10 py-4 text-lg font-bold text-navy-dark shadow-2xl transition-all hover:bg-accent-dark hover:scale-105"
               style={{ boxShadow: "var(--shadow-glow)" }}
             >
               Register Now
             </Link>
             <button
               onClick={() => setNotifyOpen(true)}
-              className="flex items-center gap-2 border border-white/20 bg-white/10 backdrop-blur-sm px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-white/20 hover:border-white/30"
+              className="flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-white/20 hover:border-white/30"
             >
               <Bell size={18} />
               Notify Me
@@ -127,7 +127,7 @@ export default function HeroSection() {
           </div>
 
           {/* Countdown */}
-          <div className="inline-flex gap-3 border border-white/15 bg-white/10 backdrop-blur-sm px-6 py-5 sm:gap-8 sm:px-12 sm:py-8">
+          <div className="inline-flex gap-3 rounded-2xl border border-white/15 bg-white/10 backdrop-blur-sm px-6 py-5 sm:gap-8 sm:px-12 sm:py-8">
             {countdownItems.map((item) => (
               <div key={item.label} className="text-center">
                 <div className="font-[family-name:var(--font-heading)] text-3xl font-bold text-white sm:text-5xl md:text-6xl tabular-nums">
