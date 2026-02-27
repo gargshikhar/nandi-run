@@ -35,10 +35,10 @@ export default function HeroSection() {
   const countdown = useCountdown(SITE.raceDay);
   const [notifyOpen, setNotifyOpen] = useState(false);
 
-  /* Only load the 3.5 MB video on desktop — mobile gets the 117 KB poster */
+  /* Show video on all devices — muted + playsInline enables mobile autoplay */
   const [showVideo, setShowVideo] = useState(false);
   useEffect(() => {
-    setShowVideo(window.innerWidth >= 768);
+    setShowVideo(true);
   }, []);
 
   const countdownItems = [
@@ -86,7 +86,7 @@ export default function HeroSection() {
           {/* Split-text headline */}
           <SplitText
             as="h1"
-            className="mb-3 text-[length:var(--text-display)] font-[family-name:var(--font-heading)] font-bold leading-[1.15] tracking-tight text-white md:mb-4"
+            className="mb-3 text-[2rem] sm:text-[2.75rem] md:text-[3.5rem] lg:text-[4.5rem] font-[family-name:var(--font-heading)] font-bold leading-[1.15] tracking-tight text-white whitespace-nowrap md:mb-4"
             playOnMount
           >
             Run into the Clouds
@@ -94,7 +94,7 @@ export default function HeroSection() {
 
           <SplitText
             as="h1"
-            className="mb-6 text-[length:var(--text-display)] font-[family-name:var(--font-heading)] font-bold leading-[1.15] tracking-tight md:mb-8"
+            className="mb-6 text-[2rem] sm:text-[2.75rem] md:text-[3.5rem] lg:text-[4.5rem] font-[family-name:var(--font-heading)] font-bold leading-[1.15] tracking-tight whitespace-nowrap md:mb-8"
             charClassName="bg-gradient-to-r from-[#ADF684] via-[#83EDA3] to-[#3AD77E] bg-clip-text text-transparent"
             playOnMount
             delay={0.4}

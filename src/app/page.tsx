@@ -8,7 +8,6 @@ import FAQSection from "@/components/FAQSection";
 import GreenRunSection from "@/components/GreenRunSection";
 import GiveawaysSection from "@/components/GiveawaysSection";
 import AboutSection from "@/components/AboutSection";
-import WinnersSection from "@/components/WinnersSection";
 import HallOfFame from "@/components/HallOfFame";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import MarqueeTicker from "@/components/animations/MarqueeTicker";
@@ -61,10 +60,6 @@ export default function Home() {
       <TestimonialsSection />
 
       <FogTransition height={50} />
-
-      <ScrollReveal animation="fade-up">
-        <WinnersSection />
-      </ScrollReveal>
 
       <HallOfFame />
 
