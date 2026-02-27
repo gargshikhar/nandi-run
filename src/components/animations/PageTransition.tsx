@@ -3,31 +3,44 @@
 import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
 
+/**
+ * Lightweight page transition — quick opacity crossfade (200ms)
+ * instead of heavy scaleY curtain to avoid "lag" feeling.
+ */
 export default function PageTransition() {
   const pathname = usePathname();
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [phase, setPhase] = useState<"idle" | "out" | "in">("idle");
   const isInitialMount = useRef(true);
 
   useEffect(() => {
-    // Skip the very first mount — prevents the double-flash "reload" on initial page load
+    // Skip the very first mount — no transition on initial page load
     if (isInitialMount.current) {
       isInitialMount.current = false;
       return;
     }
 
-    setIsTransitioning(true);
-    const timer = setTimeout(() => setIsTransitioning(false), 600);
-    return () => clearTimeout(timer);
+    // Quick flash overlay: appear → disappear
+    setPhase("out");
+    const reveal = setTimeout(() => setPhase("in"), 150);
+    const done = setTimeout(() => setPhase("idle"), 400);
+
+    return () => {
+      clearTimeout(reveal);
+      clearTimeout(done);
+    };
   }, [pathname]);
+
+  if (phase === "idle") return null;
 
   return (
     <div
       className="pointer-events-none fixed inset-0 z-[9990]"
       style={{
         background: "var(--color-bg)",
-        transform: isTransitioning ? "scaleY(1)" : "scaleY(0)",
-        transformOrigin: isTransitioning ? "top" : "bottom",
-        transition: "transform 0.5s cubic-bezier(0.77, 0, 0.175, 1)",
+        opacity: phase === "out" ? 1 : 0,
+        transition: phase === "out"
+          ? "opacity 0.12s ease-in"
+          : "opacity 0.25s ease-out",
       }}
     />
   );

@@ -46,20 +46,6 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
-        {/* Ready-gate: covers page with hero-matching navy while assets settle.
-            Pure CSS — 0.3s hold, 0.4s fade. Only visible on full page loads;
-            SPA navigations keep it hidden (animation already completed). */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: "fixed",
-            inset: 0,
-            zIndex: 9999,
-            background: "#0B2A57",
-            pointerEvents: "none",
-            animation: "pageReady 0.4s ease 0.3s forwards",
-          }}
-        />
         <SmoothScrollProvider>
           <ClientEffects />
           <Header />
