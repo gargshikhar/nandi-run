@@ -10,18 +10,6 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="pt-20">
-      <section className="relative bg-bg-section-alt py-10 md:py-14 border-b border-border">
-        <div className="mx-auto max-w-6xl px-4 text-center md:px-6">
-          <p className="text-xs uppercase tracking-[0.3em] text-primary mb-2">Get in Touch</p>
-          <h1 className="mb-2 font-[family-name:var(--font-heading)] text-2xl font-extrabold text-text md:text-3xl">
-            Contact Us
-          </h1>
-          <p className="mx-auto max-w-2xl text-sm md:text-base text-text-muted">
-            Have questions? We&apos;re here to help
-          </p>
-        </div>
-      </section>
-
       <section className="section-padding bg-bg">
         <div className="mx-auto max-w-4xl">
           <div className="grid gap-8 md:grid-cols-2">

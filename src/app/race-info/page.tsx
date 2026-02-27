@@ -69,20 +69,6 @@ function ElevationProfileSVG({ raceId, ascent, distance }: { raceId: string; asc
 export default function RaceInfoPage() {
   return (
     <div className="pt-20">
-      {/* Hero Banner — compact */}
-      <section className="relative bg-bg-section-alt py-10 md:py-14 border-b border-border">
-        <div className="mx-auto max-w-6xl px-4 text-center md:px-6">
-          <p className="text-xs uppercase tracking-[0.3em] text-primary mb-2">The Challenge</p>
-          <h1 className="mb-2 font-[family-name:var(--font-heading)] text-2xl font-extrabold text-text md:text-3xl">
-            Race Information
-          </h1>
-          <p className="mx-auto max-w-2xl text-sm text-text-muted md:text-base">
-            Everything you need to know about the Half Marathon and 10K Run at
-            Nandi Hills
-          </p>
-        </div>
-      </section>
-
       {/* Race Details */}
       {RACES.map((race) => (
         <section

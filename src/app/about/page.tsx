@@ -11,18 +11,6 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="pt-20">
-      <section className="relative bg-bg-section-alt py-10 md:py-14 border-b border-border">
-        <div className="mx-auto max-w-6xl px-4 text-center md:px-6">
-          <p className="text-xs uppercase tracking-[0.3em] text-primary mb-2">Our Story</p>
-          <h1 className="mb-2 font-[family-name:var(--font-heading)] text-2xl font-extrabold text-text md:text-3xl">
-            About the Run
-          </h1>
-          <p className="mx-auto max-w-2xl text-sm text-text-muted md:text-base">
-            The story behind India&apos;s premier monsoon hill running experience
-          </p>
-        </div>
-      </section>
-
       {/* Story */}
       <section className="section-padding bg-bg">
         <div className="mx-auto max-w-3xl">

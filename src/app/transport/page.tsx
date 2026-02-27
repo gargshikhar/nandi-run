@@ -34,21 +34,6 @@ const pickupLocations = [
 export default function TransportPage() {
   return (
     <div className="pt-20">
-      {/* Hero Banner */}
-      <section className="relative bg-bg-section-alt py-10 md:py-14 border-b border-border">
-        <div className="mx-auto max-w-6xl px-4 text-center md:px-6">
-          <p className="text-xs uppercase tracking-[0.3em] text-primary mb-2">
-            Getting There
-          </p>
-          <h1 className="mb-2 font-[family-name:var(--font-heading)] text-2xl font-extrabold text-text md:text-3xl">
-            Transport & Shuttles
-          </h1>
-          <p className="mx-auto max-w-2xl text-sm md:text-base text-text-muted">
-            How to reach the venue on race day
-          </p>
-        </div>
-      </section>
-
       {/* Shuttle Service */}
       <section className="section-padding bg-bg border-b border-border">
         <div className="mx-auto max-w-4xl">

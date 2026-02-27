@@ -97,19 +97,6 @@ export default function GalleryPage() {
 
   return (
     <div className="pt-20">
-      {/* Hero header — compact */}
-      <section className="relative bg-bg-section-alt py-10 md:py-14 border-b border-border">
-        <div className="mx-auto max-w-6xl px-4 text-center md:px-6">
-          <p className="text-xs uppercase tracking-[0.3em] text-primary mb-2 font-semibold">Memories</p>
-          <h1 className="mb-2 font-[family-name:var(--font-heading)] text-2xl font-extrabold text-text md:text-3xl">
-            Gallery
-          </h1>
-          <p className="mx-auto max-w-2xl text-sm text-text-muted md:text-base">
-            Relive the monsoon magic of Nandi Hills
-          </p>
-        </div>
-      </section>
-
       {/* Aftermovie */}
       <section className="section-padding bg-bg-section-alt">
         <div className="mx-auto max-w-5xl">

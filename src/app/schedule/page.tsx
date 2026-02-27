@@ -89,22 +89,6 @@ const reminders = [
 export default function SchedulePage() {
   return (
     <div className="pt-20">
-      {/* Hero Banner — compact */}
-      <section className="relative bg-bg-section-alt py-10 md:py-14 border-b border-border">
-        <div className="mx-auto max-w-6xl px-4 text-center md:px-6">
-          <p className="text-xs uppercase tracking-[0.3em] text-primary mb-2">
-            Race Day
-          </p>
-          <h1 className="mb-2 font-[family-name:var(--font-heading)] text-2xl font-extrabold text-text md:text-3xl">
-            Schedule
-          </h1>
-          <p className="mx-auto max-w-2xl text-sm text-text-muted md:text-base">
-            Everything happening on {SITE.date} — from shuttle departure to
-            awards
-          </p>
-        </div>
-      </section>
-
       {/* Timeline */}
       <section className="section-padding bg-bg border-b border-border">
         <div className="mx-auto max-w-3xl">
